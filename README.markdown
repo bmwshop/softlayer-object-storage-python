@@ -46,7 +46,17 @@ sl_storage['foo'].properties
 sl_storage['foo']['bar.txt'].create()
 # StorageObject(foo, sample_object.txt)
 
-sl_storage['foo']['bar.txt'].send('Plain-Text Content')
+# To send a string to the remote file use this
+sl_storage['foo']['bar.txt'].send('some plain string')
+# True
+
+# To send a file use this
+f = open('filename', 'r')
+sl_storage['foo']['bar.txt'].send(f)
+# True
+
+# Or, to send a file from a filename directly
+sl_storage['foo']['bar.txt'].load_from_filename('/absolute/filename')
 # True
 
 sl_storage['foo']['bar.txt'].read()
